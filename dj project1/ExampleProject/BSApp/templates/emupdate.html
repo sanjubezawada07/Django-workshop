@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+	{% if messages %}
+	{% for h in messages %}
+	<div class="alert alert-info alert-dismissible">
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  <strong>Success!</strong> {{h}}
+</div>
+	{% endfor %}
+	{% endif %}
+	<div class="card col-md-5 mx-auto shadow-lg border border-warning">
+		<div class="card-body">
+			<h3>update employee</h3>
+			<form method="post">
+				{% csrf_token %}
+				{% for j in b %}
+				{{j}}
+				{% endfor %}
+				<div class="row">
+					<div class="col">
+						<a href="{% url 'em' %}" class="form-control btn btn-outline-secondary">back</a>
+					</div>
+					<div class="col">
+						<input type="submit" name="" class="form-control btn-outline-success" value="update">
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+{% endblock %}

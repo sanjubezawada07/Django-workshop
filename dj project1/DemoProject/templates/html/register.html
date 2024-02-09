@@ -1,0 +1,24 @@
+{% extends 'html/base.html' %}
+{% block title %}Home{% endblock %}
+{% block content %}
+  <div class="card col-md-5 mx-auto shadow-lg border border-success mt-5">
+    <h3>registration</h3>
+    <form method="post">
+      {% csrf_token %}
+      {% for i in p%}
+      {{i}}
+      {% endfor %}
+      <div class="row">
+        <div class="col">
+          <input type="reset" value="reset" class="form-control btn btn-outline-danger">
+        </div>
+        <div class="col">
+          <input type="submit" name="" value="subsribe" class="form-control btn btn-outline-success ">
+        </div>
+      </div>
+    </form>
+  </div>
+{% endblock %}
+
+
+

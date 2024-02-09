@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-4">
+	<div class="row">
+		<div class=" card col shadow-lg border  border-warning">
+			<h3>add student</h3>
+			<form method="post">
+				{% csrf_token %}
+				<input type="text" name="a" placeholder="roll number" class="form-control my-2">
+				<input type="text" name="b" placeholder="number" class="form-control my-2">
+				<input type="number" name="c" min="1" max="4" placeholder="year" class="form-control my-2">
+
+				<div class="row my-2">
+					<div class="col">
+						<input type="reset" value="clear" class="btn btn-danger form-control shadow-lg" />
+					</div>
+					<div class="col">
+						<input type="submit" value="create" class="btn btn-success form-control shadow-lg">
+					</div>
+				</div>
+			</form>
+		</div>
+		<div class="card col ml-2 shadow-lg border border-danger h-100">
+			<h3>student data</h3>
+			<table class="table table-hover table-stripped">
+				<tr class="bg-danger text-light shadow-lg">
+					<th>sno</th>
+					<th>name</th>
+					<th>year</th>
+				</tr>
+					{% for i in s %}
+				<tr>
+					<td>{{forloop.counter}}</td>
+					<td>{{i.sn}}</td>
+					<td>
+						<div class="row">
+							<div class="col">
+								<a href="{% url 'stpd' i.id  %}" class="form-control btn btn-success">edit</a>
+							</div>
+							<div class="col">
+								<a href="{% url 'sd' i.id %}" class="form-control btn btn-danger">delete</a>
+							</div>
+						</div>
+					</td>
+				</tr>
+				{% endfor %}
+			</table>
+		</div>
+	</div>
+</div>
+{% endblock %}
